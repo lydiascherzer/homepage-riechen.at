@@ -1,38 +1,67 @@
 /* Gemeinsames Stylesheet für alle Seiten von riechen.at
-   (vorläufig – das endgültige Design wird noch festgelegt) */
+   Design abgeleitet vom Logo (siehe CLAUDE.md, Abschnitt „Design“) */
+
+/* ---------- Schrift (lokal gehostet, kein Google-Server → DSGVO-freundlich) ---------- */
+@font-face { font-family: "Poppins"; font-weight: 300; font-style: normal; font-display: swap;
+  src: url("schriften/poppins-light.woff") format("woff"); }
+@font-face { font-family: "Poppins"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("schriften/poppins-regular.woff") format("woff"); }
+@font-face { font-family: "Poppins"; font-weight: 500; font-style: normal; font-display: swap;
+  src: url("schriften/poppins-medium.woff") format("woff"); }
+
+/* ---------- Farben aus dem Logo ---------- */
+:root {
+  --salbei:        #5E7467;  /* Grün des Symbols und des Punkts */
+  --salbei-dunkel: #4E6356;  /* für Hover */
+  --salbei-hell:   #E7ECE9;  /* zarte Flächen */
+  --anthrazit:     #2C2C2C;  /* Schriftzug „riechen“ */
+  --grau:          #666B69;  /* Unterzeile „Aromapraxis & Körperarbeit“ */
+  --linie:         #DDE3DF;
+  --hintergrund:   #FAFAF8;
+  --weiss:         #FFFFFF;
+}
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  background: #f6f3ee;
-  color: #3a3a36;
-  line-height: 1.6;
+  font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  background: var(--hintergrund);
+  color: var(--anthrazit);
+  line-height: 1.7;
 }
+
+a { color: var(--salbei); }
+a:hover { color: var(--salbei-dunkel); }
 
 /* ---------- Kopfbereich mit Inhaltsangabe (Navigation) ---------- */
 .kopf {
-  background: #ffffff;
-  border-bottom: 1px solid #e4dfd6;
+  background: var(--weiss);
+  border-bottom: 1px solid var(--linie);
 }
 
 .kopf-innen {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 18px 24px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 12px 32px;
 }
 
+/* Schriftzug „riechen.“ – grüner Punkt wie im Logo */
 .logo {
-  font-size: 1.4rem;
-  color: #3a3a36;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--anthrazit);
   text-decoration: none;
 }
+.logo:hover { color: var(--anthrazit); }
+.logo .punkt { color: var(--salbei); }
 
 .navigation ul {
   list-style: none;
@@ -40,35 +69,68 @@ body {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
+  gap: 8px 28px;
 }
 
+/* Menü im Stil der Logo-Unterzeile: Großbuchstaben, weit gesperrt */
 .navigation a {
-  color: #3a3a36;
+  color: var(--grau);
   text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
 }
 
 .navigation a:hover,
 .navigation a:focus-visible {
-  border-bottom-color: #b9b2a5;
+  color: var(--salbei);
+  border-bottom-color: var(--salbei);
 }
 
 /* aktuelle Seite hervorheben */
 .navigation a[aria-current="page"] {
-  border-bottom-color: #3a3a36;
+  color: var(--anthrazit);
+  border-bottom-color: var(--salbei);
 }
 
 /* ---------- Inhalt ---------- */
 main {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 56px 24px;
 }
 
-h1 {
-  font-weight: normal;
-  font-size: 2rem;
-  margin: 0 0 1rem;
+h1, h2, h3 {
+  font-weight: 300;
+  color: var(--anthrazit);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2.2rem; margin: 0 0 1rem; }
+
+/* kleine Überzeile im Stil der Logo-Unterzeile */
+.ueberzeile {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.8rem;
+  color: var(--grau);
+}
+
+/* ---------- Startseite: großes Logo ---------- */
+.start-logo {
+  text-align: center;
+  padding: 40px 0 24px;
+}
+.start-logo img {
+  width: min(560px, 100%);
+  height: auto;
+}
+
+/* Hilfsklasse: nur für Screenreader sichtbar */
+.nur-screenreader {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
 }
