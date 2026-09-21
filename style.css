@@ -1,0 +1,74 @@
+/* Gemeinsames Stylesheet für alle Seiten von riechen.at
+   (vorläufig – das endgültige Design wird noch festgelegt) */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f6f3ee;
+  color: #3a3a36;
+  line-height: 1.6;
+}
+
+/* ---------- Kopfbereich mit Inhaltsangabe (Navigation) ---------- */
+.kopf {
+  background: #ffffff;
+  border-bottom: 1px solid #e4dfd6;
+}
+
+.kopf-innen {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  color: #3a3a36;
+  text-decoration: none;
+}
+
+.navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.navigation a {
+  color: #3a3a36;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.navigation a:hover,
+.navigation a:focus-visible {
+  border-bottom-color: #b9b2a5;
+}
+
+/* aktuelle Seite hervorheben */
+.navigation a[aria-current="page"] {
+  border-bottom-color: #3a3a36;
+}
+
+/* ---------- Inhalt ---------- */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
